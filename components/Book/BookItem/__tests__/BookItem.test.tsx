@@ -37,7 +37,7 @@ describe('<BookItem />', () => {
     expect(screen.getByText('Category: Fiction 1, Fiction 2')).toBeInTheDocument();
   });
 
-  test('calls onEditClick when "Edit" and "Remove" buttons is clicked', () => {
+  test('calls "Remove" buttons is clicked', () => {
     const mockOnRemoveEventClick = jest.fn();
 
     render(
