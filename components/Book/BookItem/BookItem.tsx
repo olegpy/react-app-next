@@ -4,9 +4,10 @@ import { Book } from '@/types/books';
 
 type BookItemProps = {
   book: Book;
+  onRemoveClick: (book: Book) => void;
 }
 
-const BookItem: FC<BookItemProps> = ({ book}) => {
+const BookItem: FC<BookItemProps> = ({ book, onRemoveClick}) => {
   return (
     <Card>
       <CardContent>
@@ -19,7 +20,7 @@ const BookItem: FC<BookItemProps> = ({ book}) => {
           <Button variant="outlined" color="primary">
             Edit
           </Button>
-          <Button variant="outlined" color="secondary">
+          <Button variant="outlined" color="secondary" onClick={() => onRemoveClick(book)}>
             Remove
           </Button>
         </Box>

@@ -15,6 +15,14 @@ const bookReducer = (state = initialState, action: any) => {
         ...state,
         books: [...books ],
       };
+    case 'DELETE_BOOK':
+      const { book:deletedBook } = action.payload;
+
+      const refreshedBooks = state.books.filter(({id}) => id !== deletedBook.id);
+      return {
+        ...state,
+        books: refreshedBooks,
+      };
     default:
       return state;
   }

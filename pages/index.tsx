@@ -1,6 +1,6 @@
 import {FC, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {setBooks} from "@/redux/actions/bookActions";
+import {setBooks, deleteBook} from "@/redux/actions/bookActions";
 import { Grid, Typography, Button, Box } from '@mui/material';
 import Layout from "@/components/global/Layout/Layout";
 import {Book} from "@/types/books";
@@ -26,6 +26,10 @@ const Home: FC<BooksProps> = ({books})  => {
     dispatch(setBooks(books));
   }, [dispatch, books]);
 
+  const handleOnRemoveClick = (book: Book) => {
+    dispatch(deleteBook(book));
+  }
+
   return(
     <Layout title="About Page">
       <Grid container>
@@ -50,6 +54,7 @@ const Home: FC<BooksProps> = ({books})  => {
             <Grid item key={book.id} xs={12} sm={6} md={4} lg={3} style={{ flex: '1 0 30%', padding: '0 5px 5px' }}>
               <BookItem
                 book={book}
+                onRemoveClick={handleOnRemoveClick}
               />
             </Grid>
           ))}

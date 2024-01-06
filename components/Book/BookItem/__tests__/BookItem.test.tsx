@@ -1,4 +1,4 @@
-import {render, screen} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import BookItem from '../BookItem';
 import {Book} from "@/types/books";
 
@@ -15,6 +15,7 @@ describe('<BookItem />', () => {
   test('renders book item correctly', async () => {
     render(<BookItem
       book={mockBook}
+      onRemoveClick={() => {}}
     />);
 
     expect(screen.getByText('Test Book')).toBeInTheDocument();
@@ -31,8 +32,22 @@ describe('<BookItem />', () => {
         { id: '2', name: 'Fiction 2' },
       ],
     };
-    render(<BookItem book={newMockBook} />);
+    render(<BookItem book={newMockBook} onRemoveClick={() => {}}/>);
 
     expect(screen.getByText('Category: Fiction 1, Fiction 2')).toBeInTheDocument();
+  });
+
+  test('calls onEditClick when "Edit" and "Remove" buttons is clicked', () => {
+    const mockOnRemoveEventClick = jest.fn();
+
+    render(
+      <BookItem
+        book={mockBook}
+        onRemoveClick={mockOnRemoveEventClick}
+      />
+    );
+
+    fireEvent.click(screen.getByText('Remove'));
+    expect(mockOnRemoveEventClick).toHaveBeenCalledWith(mockBook);
   });
 });
