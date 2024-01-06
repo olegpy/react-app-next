@@ -1,11 +1,60 @@
+import {FC, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {setBooks} from "@/redux/actions/bookActions";
+import { Grid, Typography, Button, Box } from '@mui/material';
 import Layout from "@/components/global/Layout/Layout";
-import {FC} from "react";
+import {Book} from "@/types/books";
+import apiUrl from "@/utils/apiUrl";
+import BookItem from "@/components/Book/BookItem/BookItem";
 
+export const getServerSideProps = async () => {
+  const res = await fetch(`${apiUrl()}/api/books`)
+  const books: Book[] = await res.json();
 
-const Home: FC = ()  => {
+  return { props: { books } };
+}
+
+interface BooksProps {
+  books: Book[];
+}
+
+const Home: FC<BooksProps> = ({books})  => {
+  const dispatch = useDispatch();
+  const bookList = useSelector((state: { books: { books: Book[] } }) => state.books.books);
+
+  useEffect(() => {
+    dispatch(setBooks(books));
+  }, [dispatch, books]);
+
   return(
     <Layout title="About Page">
-      Container
+      <Grid container>
+        <Grid item xs={12}>
+          <Box display="flex" alignItems="center" justifyContent="space-between" margin="0 15px" gap={2}>
+            <Typography variant="h1" align="center">
+              Book List
+            </Typography>
+            <Button variant="contained" color="primary">
+              Add Book
+            </Button>
+          </Box>
+        </Grid>
+        <Box
+          display="flex"
+          flexWrap="wrap"
+          justifyContent="flex-start"
+          margin="0 15px"
+          padding="5px" // Initial padding for each item
+        >
+          {bookList.map((book, index) => (
+            <Grid item key={book.id} xs={12} sm={6} md={4} lg={3} style={{ flex: '1 0 30%', padding: '0 5px 5px' }}>
+              <BookItem
+                book={book}
+              />
+            </Grid>
+          ))}
+        </Box>
+      </Grid>
     </Layout>
   );
 };
