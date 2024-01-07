@@ -16,6 +16,7 @@ describe('<BookItem />', () => {
     render(<BookItem
       book={mockBook}
       onRemoveClick={() => {}}
+      onEditClick={() => {}}
     />);
 
     expect(screen.getByText('Test Book')).toBeInTheDocument();
@@ -32,7 +33,11 @@ describe('<BookItem />', () => {
         { id: '2', name: 'Fiction 2' },
       ],
     };
-    render(<BookItem book={newMockBook} onRemoveClick={() => {}}/>);
+    render(<BookItem
+      book={newMockBook}
+      onRemoveClick={() => {}}
+      onEditClick={() => {}}
+    />);
 
     expect(screen.getByText('Category: Fiction 1, Fiction 2')).toBeInTheDocument();
   });
@@ -44,10 +49,26 @@ describe('<BookItem />', () => {
       <BookItem
         book={mockBook}
         onRemoveClick={mockOnRemoveEventClick}
+        onEditClick={() => {}}
       />
     );
 
     fireEvent.click(screen.getByText('Remove'));
     expect(mockOnRemoveEventClick).toHaveBeenCalledWith(mockBook);
+  });
+
+  test('calls "Edit" buttons is clicked', () => {
+    const mockOnEditEventClick = jest.fn();
+
+    render(
+      <BookItem
+        book={mockBook}
+        onRemoveClick={() => {}}
+        onEditClick={mockOnEditEventClick}
+      />
+    );
+
+    fireEvent.click(screen.getByText('Edit'));
+    expect(mockOnEditEventClick).toHaveBeenCalledWith(mockBook);
   });
 });

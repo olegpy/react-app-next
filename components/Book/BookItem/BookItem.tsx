@@ -5,9 +5,10 @@ import { Book } from '@/types/books';
 type BookItemProps = {
   book: Book;
   onRemoveClick: (book: Book) => void;
+  onEditClick: (book: Book) => void;
 }
 
-const BookItem: FC<BookItemProps> = ({ book, onRemoveClick}) => {
+const BookItem: FC<BookItemProps> = ({ book, onRemoveClick, onEditClick}) => {
   return (
     <Card>
       <CardContent>
@@ -17,7 +18,7 @@ const BookItem: FC<BookItemProps> = ({ book, onRemoveClick}) => {
         <Typography variant="caption">Category: {book.category.map(cat => cat.name).join(', ')}</Typography>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined" color="primary" onClick={() => onEditClick(book)}>
             Edit
           </Button>
           <Button variant="outlined" color="secondary" onClick={() => onRemoveClick(book)}>
