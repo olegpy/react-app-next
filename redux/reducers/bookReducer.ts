@@ -17,6 +17,13 @@ const bookReducer = (state = initialState, action: any) => {
         ...state,
         books: [...books ],
       };
+    case 'ADD_BOOK':
+      const { book } = action.payload;
+
+      return {
+        ...state,
+        books: [...state.books, book],
+      };
     case 'EDIT_BOOK':
       const { book:editedBook } = action.payload;
 

@@ -8,12 +8,12 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
-import CategorySelect from './CategoriesSelect';
 import CloseIcon from '@mui/icons-material/Close';
 import { useForm, SubmitHandler, SubmitErrorHandler, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import CategorySelect from './CategoriesSelect';
 import { Book, Category } from '@/types/books';
-import { updateBook } from '@/redux/actions/bookActions';
+import {addBook, updateBook} from '@/redux/actions/bookActions';
 
 interface BookFormProps {
   onOpen: boolean;
@@ -77,6 +77,8 @@ const BookEditForm: FC<BookFormProps> = ({ onOpen, onClose, editForm }) => {
 
     if (book) {
       dispatch(updateBook(newBook));
+    } else {
+      dispatch(addBook(newBook));
     }
 
     // Close modal after submit

@@ -5,6 +5,11 @@ export const setBooks = (books: Book[]) => ({
   payload: {books},
 });
 
+export const addBook = (book: Book) => ({
+  type: 'ADD_BOOK',
+  payload: {book},
+});
+
 export const editBook = (book?: Book) => ({
   type: 'EDIT_BOOK',
   payload: { book: book || {} },

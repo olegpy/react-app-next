@@ -4,7 +4,7 @@ export type Category = {
 };
 
 export type Book = {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   price: number;

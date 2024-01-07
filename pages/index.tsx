@@ -30,6 +30,10 @@ const Home: FC<BooksProps> = ({books})  => {
     dispatch(setBooks(books));
   }, [dispatch, books]);
 
+  const handleOnAddBook = () => {
+    setIsFormOpen(true);
+  };
+
   const handleOnRemoveClick = (book: Book) => {
     dispatch(deleteBook(book));
   };
@@ -54,7 +58,7 @@ const Home: FC<BooksProps> = ({books})  => {
             <Typography variant="h1" align="center">
               Book List
             </Typography>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={handleOnAddBook}>
               Add Book
             </Button>
           </Box>
