@@ -63,29 +63,27 @@ const CategoriesSelect: FC<MultipleSelectProps> = (props) => {
   };
 
   return (
-    <div>
-      <FormControl sx={{ width: '100%', margin: '16px 0' }}>
-        <InputLabel id="categories-label">Category</InputLabel>
-        <Select
-          labelId={labelId}
-          id={id}
-          multiple
-          value={value.map((category) => category.name)}
-          onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
-          MenuProps={MenuProps}
-        >
-          {items.map(({id, name}) => (
-            <MenuItem
-              key={id}
-              value={name}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl sx={{ width: '100%', margin: '16px 0' }}>
+      <InputLabel id="categories-label">Category</InputLabel>
+      <Select
+        labelId={labelId}
+        id={id}
+        multiple
+        value={value.map((category) => category.name)}
+        onChange={handleChange}
+        input={<OutlinedInput label="Name" />}
+        MenuProps={MenuProps}
+      >
+        {items.map(({id, name}) => (
+          <MenuItem
+            key={id}
+            value={name}
+          >
+            {name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 
