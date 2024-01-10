@@ -7,6 +7,7 @@ It is a simple web application that allows you to see list of books from server 
 #### Redux
 I created a simple store for books in folder store. It is a simple reducer with actions and types.
 
+#### Structure
 We have in folder components:
 - Book/BookItem - component for item of books
 - Book/BookEditForm - component for edit form of book
