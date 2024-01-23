@@ -117,14 +117,45 @@ const BookEditForm: FC<BookFormProps> = ({ onOpen, onClose, editForm }) => {
             </IconButton>
           </Box>
           <form onSubmit={handleSubmit(onSubmit, onError)}>
-            <TextField {...register('name', { required: 'Name is required' })} label="Name" fullWidth margin="normal" />
-            {errors.name && <span>{errors.name.message}</span>}
+            <TextField
+              {...register('name', {
+                required: 'Name is required',
+                minLength: { value: 5, message: 'Name should be at least 5 characters long' },
+                maxLength: { value: 40, message: 'Name should be at most 40 characters long' }
+              })}
+              label="Name"
+              fullWidth
+              margin="normal"
+            />
+            {errors.name && <span className='error-message'>{errors.name.message}</span>}
 
-            <TextField {...register('description', { required: 'Description is required' })} label="Description" fullWidth margin="normal" />
-            {errors.description && <span>{errors.description.message}</span>}
+            <TextField
+              {...register('description', {
+                required: 'Description is required',
+                minLength: { value: 55, message: 'Description should be at least 55 characters long' },
+                maxLength: { value: 100, message: 'Description should be at most 100 characters long' }
+              })}
+              label="Description"
+              multiline
+              rows={3} // Adjust the number of rows as needed
+              fullWidth
+              margin="normal"
+            />
+            {errors.description && <span className='error-message'>{errors.description.message}</span>}
 
-            <TextField {...register('price', { required: 'Price is required', valueAsNumber: true })} label="Price" type="number" fullWidth margin="normal" />
-            {errors.price && <span>{errors.price.message}</span>}
+            <TextField
+              {...register('price', {
+                required: 'Price is required',
+                valueAsNumber: true,
+                min: { value: 1, message: 'Price should be at least 1' },
+                max: { value: 10000, message: 'Price should be at most 10,000' }
+              })}
+              label="Price"
+              type="number"
+              fullWidth
+              margin="normal"
+            />
+            {errors.price && <span className='error-message'>{errors.price.message}</span>}
 
             <Controller
               name="category"
@@ -141,7 +172,7 @@ const BookEditForm: FC<BookFormProps> = ({ onOpen, onClose, editForm }) => {
                 />
               )}
             />
-            {errors.category && <span>{errors.category.message}</span>}
+            {errors.category && <span className='error-message'>{errors.category.message}</span>}
 
             <Button type="submit" variant="contained" color="primary" fullWidth style={{ margin: '8px 0'}}>
               Save

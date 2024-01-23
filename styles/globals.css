@@ -108,3 +108,7 @@ main {
   align-content: space-around;
   align-items: flex-start;
 }
+
+.error-message {
+  color: red;
+}
