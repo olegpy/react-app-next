@@ -71,13 +71,12 @@ const Home: FC<BooksProps> = ({books})  => {
           padding="5px" // Initial padding for each item
         >
           {bookList.map((book, index) => (
-            <Grid item key={book.id} xs={12} sm={6} md={4} lg={3} style={{ flex: '1 0 30%', padding: '0 5px 5px' }}>
               <BookItem
+                key={book.id}
                 book={book}
                 onEditClick={handleOnEditClick}
                 onRemoveClick={handleOnRemoveClick}
               />
-            </Grid>
           ))}
         </Box>
       </Grid>
