@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "cp .env.prod .env && next start",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
