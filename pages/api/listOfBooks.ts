@@ -4,7 +4,7 @@ const books: Book[] = [
   {
     id: '123123424234',
     name: 'The Alchemist',
-    description: 'The Alchemist is a novel by Brazilian author Paulo Coelho that was first published in 1988. Originally written in Portuguese, it became a widely translated international bestseller.',
+    description: 'The Alchemist is a novel by Brazilian author Paulo Coelho that was first published in 1988.',
     price: 10,
     category: [
       {
@@ -20,7 +20,7 @@ const books: Book[] = [
   {
     id: '4iJ6TVs3DIg',
     name: 'The Monk who sold his Ferrari',
-    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching Your Destiny is a self-help book by Robin Sharma, a writer and motivational speaker.',
+    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching.',
     price: 20,
     category: [
       {
@@ -32,7 +32,7 @@ const books: Book[] = [
   {
     id: 'ea3rb4fdUAjbeestD9bmKc',
     name: 'The Monk who sold his Ferrari',
-    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching Your Destiny is a self-help book by Robin Sharma, a writer and motivational speaker.',
+    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching.',
     price: 20,
     category: [
       {
@@ -44,7 +44,7 @@ const books: Book[] = [
   {
     id: 'ea5sfsdfsdfsdfsdfsdf',
     name: 'The Monk who sold his Ferrari second',
-    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching Your Destiny is a self-help book by Robin Sharma, a writer and motivational speaker.',
+    description: 'The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching.',
     price: 20,
     category: [
       {
